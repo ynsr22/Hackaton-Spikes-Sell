@@ -1,8 +1,8 @@
 import React from 'react';
 import Navbar from './components/Navbar';
-import Banner from './components/Banner';
+import Intro from './components/Intro';
 import HeroSection from './components/HeroSection';
-import Dashboard from './components/Dashboard';
+import Carrousel from './components/Carrousel';
 import Feature from './components/Feature';
 import Trial from './components/FreeTrial';
 import LastEmail from './components/LastEmail';
@@ -14,9 +14,9 @@ const App: React.FC = () => {
     <div>
       <Background />
       <Navbar />
-      <Banner />
+      <Intro />
       <HeroSection />
-      <Dashboard />
+      <Carrousel />
       <Feature />
       <Trial />
       <LastEmail />

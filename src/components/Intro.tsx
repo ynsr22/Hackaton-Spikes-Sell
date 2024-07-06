@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Banner: React.FC = () => {
+const Intro: React.FC = () => {
   return (
     <div className="flex items-center justify-center mt-[40px]">
       <div className="bg-custom-gradient w-[75%] sm:w-[50%] md:w-[40%] lg:w-[29%] h-[25px] text-white p-1 rounded-[45px] shadow-md flex items-center justify-center">
@@ -12,4 +12,4 @@ const Banner: React.FC = () => {
   );
 };
 
-export default Banner;
+export default Intro;
