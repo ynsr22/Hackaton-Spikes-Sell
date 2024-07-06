@@ -1,22 +1,30 @@
+// Import des librairies
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { ReactNode } from 'react';
+
+// Import du graphique circulaire
 import CircularProgress from './sub-components/CircularProgress';
+
+// Import du style
 import '../styles/dash.css';
 
+// Import des images
 import avatar1 from '../images/avatar/avatar1.png';
 import avatar2 from '../images/avatar/avatar6.png';
 import avatar3 from '../images/avatar/avatar5.png';
 import avatar4 from '../images/avatar/avatar4.png';
-import Bag from '../images/carousel-icone/bag.svg';
-import Cart from '../images/carousel-icone/cart.svg';
-import Triangle from '../images/carousel-icone/triangle.svg';
-import Graph from '../images/carousel-icone/graph.svg';
+import Bag from '../images/Carrousel-icone/bag.svg';
+import Cart from '../images/Carrousel-icone/cart.svg';
+import Triangle from '../images/Carrousel-icone/triangle.svg';
+import Graph from '../images/Carrousel-icone/graph.svg';
 
 // Constantes
 const CARD_WIDTH = 324;
 const NUM_CARDS = 6;
+const ANIMATION_SPEED = 1;
+const FRAME_DURATION = 16;
 
-// Composant Card extrait
+// Création du composant des cartes
 const Card = ({ children, position }: { children: ReactNode, position: number }) => (
   <div
     className="bg-white rounded-[10px] shadow-md p-4 m-2 w-[300px] h-[193px] absolute transition-none"
@@ -26,7 +34,7 @@ const Card = ({ children, position }: { children: ReactNode, position: number })
   </div>
 );
 
-// Composants pour chaque carte
+// Création des cartes
 const ManageStoreCard = () => (
   <div>
     <h2 className="font-inter font-[500] text-[15.29px] leading-[22.94px] tracking-[-0.02em] text-[#0A071B] text-center mb-[10px]">Manage your store</h2>
@@ -103,11 +111,11 @@ const SalesGraphCard = () => (
   </div>
 );
 
-const Carousel = () => {
-  const [cardPositions, setCardPositions] = useState(
-    Array.from({ length: NUM_CARDS }, (_, i) => i * CARD_WIDTH)
-  );
+const Carrousel = () => {
+  const [isAnimating, setIsAnimating] = useState(true);
   const animationRef = useRef<number | null>(null);
+  const lastFrameTimeRef = useRef<number | null>(null);
+  const positionsRef = useRef(Array.from({ length: NUM_CARDS }, (_, i) => i * CARD_WIDTH));
 
   const cards = [
     <ManageStoreCard key="card-1" />,
@@ -117,36 +125,62 @@ const Carousel = () => {
 
   const extendedCards = [...cards, ...cards];
 
-  const animate = useCallback(() => {
-    setCardPositions(prevPositions =>
-      prevPositions.map((pos) => {
-        const newPos = pos - 1;
+  const animate = useCallback((timestamp: number) => {
+    if (!lastFrameTimeRef.current) lastFrameTimeRef.current = timestamp;
+    const deltaTime = timestamp - lastFrameTimeRef.current;
+    
+    if (deltaTime >= FRAME_DURATION) {
+      positionsRef.current = positionsRef.current.map((pos) => {
+        const newPos = pos - ANIMATION_SPEED;
         return newPos < -CARD_WIDTH ? (NUM_CARDS - 1) * CARD_WIDTH : newPos;
-      })
-    );
-    animationRef.current = requestAnimationFrame(animate);
-  }, []);
+      });
+      
+      setCardPositions([...positionsRef.current]);
+      lastFrameTimeRef.current = timestamp;
+    }
+    
+    if (isAnimating) {
+      animationRef.current = requestAnimationFrame(animate);
+    }
+  }, [isAnimating]);
 
   useEffect(() => {
-    animationRef.current = requestAnimationFrame(animate);
+    if (isAnimating) {
+      animationRef.current = requestAnimationFrame(animate);
+    }
     return () => {
       if (animationRef.current) cancelAnimationFrame(animationRef.current);
     };
-  }, [animate]);
+  }, [animate, isAnimating]);
+
+  const [cardPositions, setCardPositions] = useState(positionsRef.current);
+
+  const handleMouseEnter = () => {
+    setIsAnimating(false);
+  };
+
+  const handleMouseLeave = () => {
+    setIsAnimating(true);
+  };
 
   return (
-    <div className="relative w-[90%] sm:w-[68%] h-[275px] mx-auto mt-[75px]">
-      {/* Blurred Ellipse */}
+    <div 
+      className="relative w-[90%] sm:w-[68%] h-[275px] mx-auto mt-[75px]"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <div className="blurred-ellipse3"></div>
-      {/* White sheet */}
+
+      {/* Rectangle blanc */}
       <div className="absolute left-1/2 transform -translate-x-1/2 -translate-y-[43px] w-[85%] h-[95%] bg-white rounded-[25px] opacity-20"></div>
       <div className="absolute left-1/2 transform -translate-x-1/2 -translate-y-[30px] w-[90%] h-[95%] bg-white rounded-[25px] opacity-50"></div>
       <div className="absolute left-1/2 transform -translate-x-1/2 -translate-y-[15px] w-[95%] h-[95%] bg-white rounded-[25px] opacity-80"></div>
-      {/* Gradient rectangle */}
+      
+      {/* Rectangle gradient */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#314EE7] to-[#FE9C9C] rounded-[25px] p-6 flex items-center justify-center">
         <div className="relative w-full h-full overflow-hidden">
           {extendedCards.map((card, index) => (
-            <Card key={index} position={cardPositions[index]}>
+            <Card key={index} position={cardPositions[index % NUM_CARDS]}>
               {card}
             </Card>
           ))}
@@ -156,4 +190,4 @@ const Carousel = () => {
   );
 };
 
-export default Carousel;
+export default Carrousel;
