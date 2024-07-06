@@ -64,3 +64,5 @@ storybook-static/
 # .env files
 .env
 .env.*.local
+
+.vercel

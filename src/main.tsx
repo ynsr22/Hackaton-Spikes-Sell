@@ -3,14 +3,14 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import './index.css';
 
-// Créez la racine du DOM où l'application React sera rendue
+// Racine du DOM
 const rootElement = document.getElementById('root');
 
 // Vérifiez si l'élément root existe avant de continuer
 if (rootElement) {
   const root = ReactDOM.createRoot(rootElement);
 
-  // Rendre l'application en mode StrictMode pour détecter les problèmes potentiels
+  // StrictMode pour détecter les problèmes potentiels
   root.render(
     <React.StrictMode>
       <App />
