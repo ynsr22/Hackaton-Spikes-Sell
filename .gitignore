@@ -37,12 +37,6 @@ build/
 *.sln
 *.sw?
 
-# Tailwind CSS
-tailwind.config.js
-tailwind.config.cjs
-tailwind.config.mjs
-tailwind.config.ts
-
 # TypeScript
 *.tsbuildinfo
 
