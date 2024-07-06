@@ -1,5 +1,5 @@
 // Import des librairies
-import { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { ReactNode } from 'react';
 
 // Import du graphique circulaire
