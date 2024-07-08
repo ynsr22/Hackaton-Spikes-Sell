@@ -4,7 +4,7 @@ import Icon from '/src/images/logo/logo.svg';
 const Navbar: React.FC = () => {
   return (
     <div className="flex justify-center mt-[40px]">
-      <nav className="md:w-2/4 w-[80%] max-width-5xl h-[37px] bg-[#282828] text-white flex justify-between items-center rounded-[10px] px-[10px] py-[6px] shadow-custom">
+      <nav className="md:w-2/4 w-[80%] h-[37px] bg-[#282828] text-white flex justify-between items-center rounded-[10px] px-[10px] py-[6px] shadow-custom">
         <div className="flex items-center">
           <img src={Icon} alt="Logo" className="h-[43%] w-[45%] mr-2 pl-2" />
           <span className="font-['DM_Sans'] text-[14px] font-[700] leading-[20.3px] text-left">Sell</span>

@@ -90,20 +90,20 @@ const Carrousel = () => {
   return (
     <div
       className="relative w-[90%] sm:w-[68%] h-[275px] mx-auto mt-[75px]"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      role="region"
-      aria-label="Carousel"
     >
       <div className="blurred-ellipse3"></div>
 
       {/* Rectangle blanc */}
-      <div className="absolute left-1/2 transform -translate-x-1/2 -translate-y-[43px] w-[85%] h-[95%] bg-white rounded-[25px] opacity-20"></div>
-      <div className="absolute left-1/2 transform -translate-x-1/2 -translate-y-[30px] w-[90%] h-[95%] bg-white rounded-[25px] opacity-50"></div>
-      <div className="absolute left-1/2 transform -translate-x-1/2 -translate-y-[15px] w-[95%] h-[95%] bg-white rounded-[25px] opacity-80"></div>
+      <div className="absolute left-1/2 transform -translate-x-1/2 -translate-y-[43px] w-[85%] h-[95%] bg-white rounded-[25px] opacity-20 max-w-3xl"></div>
+      <div className="absolute left-1/2 transform -translate-x-1/2 -translate-y-[30px] w-[90%] h-[95%] bg-white rounded-[25px] opacity-50 max-w-4xl"></div>
+      <div className="absolute left-1/2 transform -translate-x-1/2 -translate-y-[15px] w-[95%] h-[95%] bg-white rounded-[25px] opacity-80 max-w-5xl"></div>
 
       {/* Rectangle gradient */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#314EE7] to-[#FE9C9C] rounded-[25px] py-[33px] flex items-center justify-center">
+      <div className="absolute inset-0 bg-gradient-to-r from-[#314EE7] to-[#FE9C9C] rounded-[25px] py-[33px] flex items-center justify-center max-w-5xl"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            role="region"
+            aria-label="Carousel">
   <div className="relative w-full h-full overflow-hidden">
     {extendedCards.map((card, index) => (
       <Card key={index} position={cardPositions[index % NUM_CARDS]}>
