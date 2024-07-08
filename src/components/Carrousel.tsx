@@ -103,15 +103,19 @@ const Carrousel = () => {
       <div className="absolute left-1/2 transform -translate-x-1/2 -translate-y-[15px] w-[95%] h-[95%] bg-white rounded-[25px] opacity-80"></div>
 
       {/* Rectangle gradient */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#314EE7] to-[#FE9C9C] rounded-[25px] p-6 flex items-center justify-center">
-        <div className="relative w-full h-full overflow-hidden">
-          {extendedCards.map((card, index) => (
-            <Card key={index} position={cardPositions[index % NUM_CARDS]}>
-              {card}
-            </Card>
-          ))}
-        </div>
-      </div>
+      <div className="absolute inset-0 bg-gradient-to-r from-[#314EE7] to-[#FE9C9C] rounded-[25px] py-[33px] flex items-center justify-center">
+  <div className="relative w-full h-full overflow-hidden">
+    {extendedCards.map((card, index) => (
+      <Card key={index} position={cardPositions[index % NUM_CARDS]}>
+        {card}
+      </Card>
+    ))}
+
+  </div>
+  <div className="rounded-l-[25px] absolute inset-y-0 left-0 w-[100px] bg-gradient-to-r from-[#314EE7] to-transparent pointer-events-none"></div>
+  <div className="rounded-r-[25px] absolute inset-y-0 right-0 w-[100px] bg-gradient-to-l from-[#FE9C9C] to-transparent pointer-events-none"></div>
+
+</div>
     </div>
   );
 };

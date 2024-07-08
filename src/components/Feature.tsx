@@ -1,8 +1,8 @@
 import React from 'react';
-import Billet from '../images/feature-icone/billet.png';
-import Boite from '../images/feature-icone/boite.png';
-import Coeur from '../images/feature-icone/heart.png';
-import Www from '../images/feature-icone/www.png';
+import Billet from '../images/feature-icone/billet.svg';
+import Boite from '../images/feature-icone/boite.svg';
+import Coeur from '../images/feature-icone/heart.svg';
+import Www from '../images/feature-icone/www.svg';
 
 interface Feature {
   imgSrc: string;
