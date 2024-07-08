@@ -25,7 +25,7 @@ const HeroSection: React.FC = () => {
 
   return (
     <div className="flex items-center justify-center mt-5 text-center p-6">
-      <div className="w-[80%] sd:w-1/2">
+      <div className="w-[80%] sd:w-1/2  max-w-3xl">
         <h1 className="font-bold text-black mb-4 font-delaGothicOne font-400 text-[30px] leading-[35px] md:text-[48px] md:leading-[54.38px]">
           Best way to sell<br /> your digital product
         </h1>

@@ -9,7 +9,7 @@ const LastEmail: React.FC = () => {
   };  
 
   return (
-    <div className="flex w-[90%] sm:w-[68%] h-auto sm:h-[281px] mx-auto flex-col items-center justify-center mt-2 rounded-[25px] bg-white p-6">
+    <div className="flex w-[90%] sm:w-[68%] h-auto sm:h-[281px] mx-auto flex-col items-center justify-center mt-2 rounded-[25px] bg-white p-6 max-w-4xl">
       <h2 className="text-center font-delaGothicOne font-[400] text-[24px] sm:text-[32px] leading-[30px] sm:leading-[46.34px] text-[#0A071B]">
         Be the first to know about new features, special offers, and more.
       </h2>

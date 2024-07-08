@@ -89,7 +89,7 @@ const Carrousel = () => {
 
   return (
     <div
-      className="relative w-[90%] sm:w-[68%] h-[275px] mx-auto mt-[75px]"
+      className="relative w-[90%] sm:w-[68%] h-[275px] mx-auto mt-[75px] max-w-4xl"
     >
       <div className="blurred-ellipse3"></div>
 

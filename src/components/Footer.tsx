@@ -10,7 +10,7 @@ const footerLinks = [
 
 const Footer: React.FC = () => {
   return (
-    <footer className="flex flex-col md:flex-row w-full md:w-[68%] items-center justify-between p-4 mt-10 mb-[20px] mx-auto space-y-4 md:space-y-0">
+    <footer className="flex flex-col md:flex-row w-full md:w-[68%] items-center justify-between p-4 mt-10 mb-[20px] mx-auto space-y-4 md:space-y-0 max-w-4xl">
       <div className="flex items-center space-x-2">
         <img src={Icon} alt="Sell Logo" className="w-4 h-4 rotate-180" />
         <span className="text-[#0A071B] font-dmSans font-[700] text-[14px] leading-[20.3px]">Sell</span>

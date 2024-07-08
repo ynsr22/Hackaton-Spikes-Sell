@@ -8,7 +8,7 @@ const ArrowIcon: React.FC = () => (
 
 const FreeTrialCard: React.FC = () => {
   return (
-    <div className="flex justify-center bg-gray-100 py-8 mt-[-20px]">
+    <div className="flex justify-center py-8 mt-[-20px]">
       <div className="flex items-center justify-center font-manrope p-4 bg-white rounded-lg shadow-custom2 space-x-4 w-fit">
         <div>
           <h3 className="text-[#314EE7] font-[700] text-[18px] leading-[32px] tracking-[-2%]">Try for free</h3>
